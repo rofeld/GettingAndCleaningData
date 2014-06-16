@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>README - Project for Getting and Cleaning Data</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h1>README - Project for Getting and Cleaning Data</h1>
+
+<h3>Requirements</h3>
+
+<p>The purpose of this project is to demonstrate your ability to collect, work with, and clean a data set. The goal is to prepare tidy data that can be used for later analysis. You will be graded by your peers on a series of yes/no questions related to the project. You will be required to submit: 1) a tidy data set as described below, 2) a link to a Github repository with your script for performing the analysis, and 3) a code book that describes the variables, the data, and any transformations or work that you performed to clean up the data called CodeBook.md. You should also include a README.md in the repo with your scripts. This repo explains how all of the scripts work and how they are connected.  </p>
+
+<p>One of the most exciting areas in all of data science right now is wearable computing - see for example this article . Companies like Fitbit, Nike, and Jawbone Up are racing to develop the most advanced algorithms to attract new users. The data linked to from the course website represent data collected from the accelerometers from the Samsung Galaxy S smartphone. A full description is available at the site where the data was obtained: </p>
+
+<p><a href="http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones">http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones</a></p>
+
+<p>Here are the data for the project: </p>
+
+<p><a href="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip">https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip</a> </p>
+
+<p>You should create one R script called run_analysis.R that does the following.</p>
+
+<ol>
+<li>Merges the training and the test sets to create one data set.</li>
+<li>Extracts only the measurements on the mean and standard deviation for each measurement. </li>
+<li>Uses descriptive activity names to name the activities in the data set</li>
+<li>Appropriately labels the data set with descriptive variable names. </li>
+<li>Creates a second, independent tidy data set with the average of each variable for each activity and each subject. </li>
+</ol>
+
+<h3>Steps to reproduce this script (run_analysis.R)</h3>
+
+<p>After downloading and extracting the dataset required for this project, please change your working directory to &ldquo;UCI HAR Dataset&rdquo; folder or to the folder you have extracted downloaed dataset to. Please note that &ldquo;test&rdquo; and &ldquo;train&rdquo; folders should be in your working directory. run_analysis.R script can be run from any location as script will use your working directory as default location.</p>
+
+<pre><code>wd &lt;- getwd()
+</code></pre>
+
+<p>Below is what you should see in your R working directory</p>
+
+<pre><code>C:.
+|   activity_labels.txt
+|   features.txt
+|   features_info.txt
+|   README.txt
+|
++---test
+|   |   subject_test.txt
+|   |   X_test.txt
+|   |   y_test.txt
+|   |
+|   \---Inertial Signals
+|           body_acc_x_test.txt
+|           body_acc_y_test.txt
+|           body_acc_z_test.txt
+|           body_gyro_x_test.txt
+|           body_gyro_y_test.txt
+|           body_gyro_z_test.txt
+|           total_acc_x_test.txt
+|           total_acc_y_test.txt
+|           total_acc_z_test.txt
+|
+\---train
+    |   subject_train.txt
+    |   X_train.txt
+    |   y_train.txt
+    |
+    \---Inertial Signals
+            body_acc_x_train.txt
+            body_acc_y_train.txt
+            body_acc_z_train.txt
+            body_gyro_x_train.txt
+            body_gyro_y_train.txt
+            body_gyro_z_train.txt
+            total_acc_x_train.txt
+            total_acc_y_train.txt
+            total_acc_z_train.txt
+</code></pre>
+
+<h3>Output produced</h3>
+
+<p>Execute &ldquo;run_analysis.R&rdquo; script by loading into your RStudio, via R console with source(&ldquo;run_analysis.R&rdquo;) or via executing Rscript &ldquo;run_analysis.R&rdquo;, assume that run_analysis.R is in your current directory.</p>
+
+<p>&ldquo;run_analysis.R&rdquo; produces one output file in your working directory:</p>
+
+<ol>
+<li>&ldquo;tidy.data.set.mean.txt&rdquo; </li>
+</ol>
+
+<p>Please note that &ldquo;tidy.data.set.mean&rdquo; data is derived from &ldquo;tidy.data.set&rdquo; and has the average of each variable for each activity and each subject.</p>
+
+</body>
+
+</html>
+
